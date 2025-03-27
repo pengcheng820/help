@@ -125,8 +125,7 @@ sudo systemctl  daemon-reload
 sudo systemctl restart docker
 </code></pre>
             <p>使用该代理从拉取镜像</p>
-            <pre><code id="commands">
-# 拉取 Docker-Hub上的Nginx最新镜像
+            <pre><code id="commands"># 拉取 Docker-Hub上的Nginx最新镜像
 # docker pull nginx:latest
 latest: Pulling from library/nginx
 f11c1adaa26e: Pull complete
@@ -146,8 +145,7 @@ docker.io/library/nginx:latest
             <h2>NSFWJS接口</h2>
             <p>NSFWJS 是一个基于 TensorFlow.js 的 JavaScript 库，可以在浏览器或 Node.js 环境中检测不适宜的图像内容。</p>
             <h3>接口地址</h3>
-            <pre><code id="registry-config">
-https://nsfwjs.pengcheng.team/classify
+            <pre><code id="registry-config">https://nsfwjs.pengcheng.team/classify
 </code></pre>
             <h3>请求示例</h3>
             <pre><code id="registry-config">属性字段：image
@@ -156,9 +154,7 @@ POST /classify HTTP/1.1
 Content-Type: multipart/form-data
 </code></pre>
             <h3>响应示例</h3>
-            <p>使用该代理从不同的镜像仓库拉取镜像，请参考以下命令：</p>
-            <pre><code id="commands">
-HTTP/1.1 200 OK
+            <pre><code id="commands">HTTP/1.1 200 OK
 Content-Type: application/jsoncode
 
 {
