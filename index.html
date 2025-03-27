@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <title>镜像加速使用说明</title>
-    <link rel="shortcut icon" href="https://image.pengcheng.team/i/5557e9c5e39c881e96f370c175850cfb/638a74341b509.ico" type="image/x-icon">
+    <title>Pengcheng's Service调用帮助说明</title>
+    <link rel="shortcut icon" href="https://image.pengcheng.team/i/5557e9c5e39c881e96f370c175850cfb/638a74341b509.ico"
+        type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -93,14 +95,25 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
     <div class="header">
-        <h1>镜像加速使用说明</h1>
+        <h1>Pengcheng's Service调用帮助说明</h1>
     </div>
+<!-- OnlyOffice集成 -->
     <div class="container">
         <div class="content">
-            <p>由于国内纷纷关闭Docker镜像仓库，导致在国内无法下载Docker镜像<br/>
-            为了加速 Docker 镜像拉取，可以使用以下命令设置</p>
+            <h2>OnlyOffice集成</h2>
+            <p>OnlyOffice 可以与 Nextcloud、OwnCloud 等系统集成，以实现文档在线预览编辑与协同办公。</p>
+            <h3>集成地址</h3>
+            <pre><code id="registry-config">https://office.pengcheng.team
+</code></pre>
+        </div>
+<!-- Docker镜像下载代理 -->
+        <div class="content">
+            <h2>Docker镜像下载代理</h2>
+            <p>由于国内纷纷关闭Docker镜像仓库，导致在国内无法下载Docker镜像<br />
+                为了加速 Docker 镜像拉取，可以使用以下命令设置。</p>
             <pre><code id="registry-config">sudo tee /etc/docker/daemon.json &lt;&lt;EOF
 {
     "registry-mirrors": ["https://docker.pengcheng.team"]
@@ -111,8 +124,8 @@ sudo systemctl  daemon-reload
 # 重启 Docker 服务
 sudo systemctl restart docker
 </code></pre>
-<p>使用该代理从不同的镜像仓库拉取镜像，请参考以下命令：</p>
-<pre><code id="commands">
+            <p>使用该代理从拉取镜像</p>
+            <pre><code id="commands">
 # 拉取 Docker-Hub上的Nginx最新镜像
 # docker pull nginx:latest
 latest: Pulling from library/nginx
@@ -126,48 +139,53 @@ adc73cb74f25: Pull complete
 Digest: sha256:67682bda769fae1ccf5183192b8daf37b64cae99c6c3302650f6f8bf5f0f95df
 Status: Downloaded newer image for nginx:latest
 docker.io/library/nginx:latest
-<!-- 
-# docker pull quay.io/coreos/etcd:latest
-docker pull quay.{{host}}/coreos/etcd:latest  # 拉取 Quay 镜像
-
-# docker pull gcr.io/google-containers/busybox:latest
-docker pull gcr.{{host}}/google-containers/busybox:latest  # 拉取 GCR 镜像
-
-# docker pull k8s.gcr.io/pause:latest
-docker pull k8s-gcr.{{host}}/pause:latest  # 拉取 k8s.gcr.io 镜像
-
-# docker pull registry.k8s.io/pause:latest
-docker pull k8s.{{host}}/pause:latest  # 拉取 registry.k8s.io 镜像
-
-# docker pull ghcr.io/github/super-linter:latest
-docker pull ghcr.{{host}}/github/super-linter:latest  # 拉取 GitHub 容器镜像
-
-# docker pull docker.cloudsmith.io/public/repo/image:latest
-docker pull cloudsmith.{{host}}/public/repo/image:latest  # 拉取 Cloudsmith 镜像 -->
 </code></pre>
-<!-- <p>其他镜像加速地址</p>
-<pre><code id="speed">Docker镜像：docker.pengcheng.team
-
-Quay镜像：quay.pengcheng.team
-
-GCR镜像：gcr.pengcheng.team
-
-GHCR镜像：ghcr.pengcheng.team
-
-K8S镜像：ks8.pengcheng.team、k8s-gcr.pengcheng.team
-
-CLOUDSMITH镜像：cloudsmith.pengcheng.team
-
-ECR镜像：ecr.pengcheng.team
-</code></pre> -->
         </div>
+<!-- NSFWJS接口 -->
+        <div class="content">
+            <h2>NSFWJS接口</h2>
+            <p>NSFWJS 是一个基于 TensorFlow.js 的 JavaScript 库，可以在浏览器或 Node.js 环境中检测不适宜的图像内容。</p>
+            <h3>接口地址</h3>
+            <pre><code id="registry-config">
+https://nsfwjs.pengcheng.team/classify
+</code></pre>
+            <h3>请求示例</h3>
+            <pre><code id="registry-config">属性字段：image
+
+POST /classify HTTP/1.1
+Content-Type: multipart/form-data
+</code></pre>
+            <h3>响应示例</h3>
+            <p>使用该代理从不同的镜像仓库拉取镜像，请参考以下命令：</p>
+            <pre><code id="commands">
+HTTP/1.1 200 OK
+Content-Type: application/jsoncode
+
+{
+    "porn": 0.59248286485672,
+    "sexy": 0.39802199602127075,
+    "hentai": 0.006243097595870495,
+    "neutral": 0.0031403270550072193,
+    "drawing": 0.00011181648733327165
+}
+</code></pre>
+        </div>
+<!-- 后续添加 -->
     </div>
+
     <div class="footer">
         <p>
-            <a href="https://www.pengcheng.team" target="_blank">Pengcheng's Home</a> | <a href="https://blog.pengcheng.team" target="_blank">Pengcheng's Blog</a> | <a href="https://image.pengcheng.team" target="_blank">Pengcheng's Image</a> | <a href="https://pan.pengcheng.team" target="_blank">Pengcheng's Download</a> | <a href="https://server.pengcheng.team" target="_blank">服务监控</a> | <a href="https://blog.pengcheng.team/index.php/chat.html" target="_blank">给我留言</a> | <a href="mailto:pengcheng@pengcheng.team" target="_blank" rel="nofollow noopener">给我发邮件</a>
+            <a href="https://www.pengcheng.team" target="_blank">Pengcheng's Home</a> | <a
+                href="https://blog.pengcheng.team" target="_blank">Pengcheng's Blog</a> | <a
+                href="https://pan.pengcheng.team" target="_blank">Pengcheng's Download</a> | <a
+                href="https://server.pengcheng.team" target="_blank">服务监控</a> | <a
+                href="https://blog.pengcheng.team/index.php/chat.html" target="_blank">给我留言</a> | <a
+                href="mailto:pengcheng@pengcheng.team" target="_blank" rel="nofollow noopener">给我发邮件</a>
         </p>
         <p>
-            1996-<script type="text/javascript">document.write((new Date()).getFullYear());</script> Powered by <a href="https://www.pengcheng.team" target="_blank">鹏程</a>
+            1996-
+            <script type="text/javascript">document.write((new Date()).getFullYear());</script> Powered by <a
+                href="https://www.pengcheng.team" target="_blank">鹏程</a>
         </p>
         <p>
             <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">苏ICP备2022042732号-1</a>
