@@ -168,6 +168,19 @@ Content-Type: application/jsoncode
     "drawing": 0.00011181648733327165
 }
 </code></pre>
+            <h3>测试示例</h3>
+            <pre><code id="commands">curl -X POST https://nsfwjs.pengcheng.team/classify -F "image=@/root/background.jpg" | jq '.'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  299k  100   148  100  299k     52   105k  0:00:02  0:00:02 --:--:--  105k
+{
+  "drawing": 0.9432304501533508,
+  "neutral": 0.04196060076355934,
+  "hentai": 0.01332409493625164,
+  "porn": 0.0012502941535785794,
+  "sexy": 0.00023456310736946762
+}
+</code></pre>
         </div>
 <!-- 后续添加 -->
     </div>
