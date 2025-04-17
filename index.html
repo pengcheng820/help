@@ -117,17 +117,37 @@
             <h2>Docker镜像下载代理</h2>
             <p>由于国内纷纷关闭Docker镜像仓库，导致在国内无法下载Docker镜像<br />
                 为了加速 Docker 镜像拉取，可以使用以下命令设置。</p>
+            <h3>临时使用</h3>
+            <p>在拉取镜像前面添加 docker.pengcheng.team</p>
+            <pre><code id="registry-config"># 拉取 Docker-Hub上的Nginx最新镜像
+# docker pull docker.pengcheng.team/nginx:latest
+latest: Pulling from library/nginx
+f11c1adaa26e: Pull complete
+c6b156574604: Pull complete
+ea5d7144c337: Pull complete
+1bbcb9df2c93: Pull complete
+537a6cfe3404: Pull complete
+767bff2cc03e: Pull complete
+adc73cb74f25: Pull complete
+Digest: sha256:67682bda769fae1ccf5183192b8daf37b64cae99c6c3302650f6f8bf5f0f95df
+Status: Downloaded newer image for nginx:latest
+docker.pengcheng.team/nginx:latest
+</code></pre>
+            <h3>永久配置</h3>
+            <p>编辑docker的daemon.json文件</p>
             <pre><code id="registry-config">sudo tee /etc/docker/daemon.json &lt;&lt;EOF
 {
     "registry-mirrors": ["https://docker.pengcheng.team"]
 }
 EOF
+                
 # 重载 Docker 配置
 sudo systemctl  daemon-reload
+
 # 重启 Docker 服务
 sudo systemctl restart docker
 </code></pre>
-            <p>使用该代理从拉取镜像</p>
+            <p>设置代理后从拉取镜像</p>
             <pre><code id="commands"># 拉取 Docker-Hub上的Nginx最新镜像
 # docker pull nginx:latest
 latest: Pulling from library/nginx
