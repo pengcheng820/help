@@ -16,7 +16,7 @@
             background-color: #f4f4f4;
         }
 
-        .header {
+        。header {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: #fff;
             padding: 20px 0;
@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        .github-link {
+        。github-link {
             position: absolute;
             top: 10px;
             right: 20px;
@@ -33,7 +33,7 @@
             text-decoration: none;
         }
 
-        .github-icon {
+        。github-icon {
             width: 24px;
             height: 24px;
             vertical-align: middle;
@@ -203,6 +203,26 @@ Content-Type: application/jsoncode
 }
 </code></pre>
         </div>
+<!-- KMS -->
+    <div class="container">
+        <div class="content">
+            <h2>KMS激活服务</h2>
+            <p>KMS 激活服务，slmgr 命令激活 Windows 系统</p>
+            <h3>版本对应秘钥查询</h3>
+            <pre><code id="registry-config">https://learn.microsoft.com/zh-cn/windows-server/get-started/kms-client-activation-keys</code></pre>
+            <h3>激活步骤</h3>
+            <pre><code id="registry-config"># 查看当前系统版本
+wmic os get caption
+
+# 设置服务
+slmgr -skms kms.pengcheng.team
+
+# 安装密钥
+slmgr -ipk 版本对应秘钥
+
+# 激活系统
+slmgr -ato</code></pre>
+        </div>
 <!-- 后续添加 -->
     </div>
 
@@ -237,3 +257,4 @@ Content-Type: application/jsoncode
 </body>
 
 </html>
+
